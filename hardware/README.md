@@ -1,36 +1,142 @@
 # Hardware
 
-All mechanical and electrical source files for the Sesame Robot live here. The hardware stack supports multiple build paths:
+This directory contains all of the mechanical and electronic resources required to build **CRAB-X**, a bio-inspired 3D-printed robotic crab.
 
-- **Hand-wired / Lolin S2 Mini build** for simple protoboard construction (recommended for DIY builds).
-- **Custom Sesame Distro Board V3 build** (Current) for a professional SMD design with USB-C PD 12V and specific connector for Bambu Lab battery (included in new Sesame Build Kits, pre-flashed).
-- **Custom Sesame Distro Board V3/V2 build** (Legacy) professional SMD design but plagued with brownouts on battery. Recommended for USB only or bypassing the buck converter.
-- **Custom Sesame Distro Board V1 build** (legacy) for ESP32-DevKitC-32E stackup (phased out but still supported).
+The hardware has been designed to be modular, allowing builders to assemble the robot using readily available components while providing flexibility for future upgrades such as computer vision, autonomous navigation, and additional sensors.
 
-Use the sections below to jump to the files that match the version you are assembling.
+Whether you're building your first walking robot or experimenting with embedded systems, this directory contains everything needed to assemble the physical platform.
 
-## Directory Guide
+---
 
-| Folder | What you will find |
-| --- | --- |
-| [bom](bom/README.md) | Full bill of materials covering both wiring approaches, plus power budget notes and links back to the build tutorial. Start here to gather every component before printing or soldering. |
-| [cad](cad/README.md) | Parametric STEP and Fusion 360 source models for every printed part. Great for remixing joint geometry or adapting the shell—just note the caution about features that may not translate across CAD packages. |
-| [pcb](pcb/README.md) | Sesame Distro Board V3 (current), V2 (legacy), and V1 (legacy) schematics, layout files, Gerber files, BOM, and Pick-and-Place files. Includes ordering instructions for PCBway fabrication and assembly services. |
-| [printing](printing/README.md) | Practical PLA print settings, support callouts, and image references for joint orientation and the top cover’s manual supports. |
+# Directory Guide
 
-## Getting Started
+| Folder | Description |
+| ------- | ----------- |
+| [bom](bom/README.md) | Complete Bill of Materials (BOM) including electronics, mechanical components, fasteners, and recommended tools. |
+| [cad](cad/README.md) | Original Fusion 360 designs, STEP files, and editable CAD models for customization and future development. |
+| [printing](printing/README.md) | STL files, recommended print settings, printer orientation, and assembly notes for all 3D-printed components. |
+| [electronics](electronics/README.md) | Circuit diagrams, wiring layouts, pin connections, and electrical documentation. *(Coming Soon)* |
 
-1. **Decide on a wiring strategy.** Review the comparison section in [docs/wiring-guide/README.md](../docs/wiring-guide/README.md) to choose between the protoboard and custom PCB routes. The Lolin S2 Mini build is recommended for DIY builders. If you have a Sesame Build Kit, your V3 (or early V2) Distro Board is already pre-flashed and ready to use.
-2. **Print the shell and joints.** Follow the presets in [printing/README.md](printing/README.md) to prep the 3D files from `hardware/printing/stl`.
-3. **Source electronics.** Use the line-by-line list in [bom/README.md](bom/README.md) and verify your power supply meets the 5V/3A requirement.
-4. **Assemble electronics.** Reference either the hand-wiring steps or the appropriate Distro Board guide plus the wiring diagrams in `docs/wiring-guide/`.
+---
 
-> [!TIP]
-> Keep photos of your wiring progress. They are invaluable for troubleshooting later and help when sharing build notes with the community.
+# Hardware Specifications
 
-## Supporting Documents
+## Controller
 
-- [docs/build-guide/README.md](../docs/build-guide/README.md) for end-to-end assembly sequencing.
-- [docs/wiring-guide/README.md](../docs/wiring-guide/README.md) for wiring diagrams, safety notes, and packing tips.
+- ESP32 Development Board
 
-Improvements, remixes, and test reports are welcome, file issues or PRs with any updates you discover while building. <3
+## Actuators
+
+- 8 × MG90S Metal Gear Servo Motors
+
+## Structure
+
+- Fully 3D Printed PLA Chassis
+- Modular Leg Assembly
+- Lightweight Mechanical Design
+
+## Power System
+
+- 2S Li-ion Battery
+- Voltage Regulator
+- Power Switch
+
+## Expandable Modules
+
+- ESP32-CAM
+- Ultrasonic Sensor
+- IMU
+- OLED Display
+- ToF Distance Sensor
+
+---
+
+# Getting Started
+
+## 1. Print the Mechanical Parts
+
+Download the STL files from the **printing** directory and print every required component using the recommended settings.
+
+Recommended Material:
+
+- PLA
+- 0.2 mm Layer Height
+- 20% Infill
+
+---
+
+## 2. Gather Components
+
+Use the **Bill of Materials (BOM)** to collect all electronics, screws, bearings, and accessories before beginning assembly.
+
+---
+
+## 3. Assemble the Robot
+
+Follow the **Build Guide** to assemble the chassis, install servos, and mount the electronics.
+
+---
+
+## 4. Complete Wiring
+
+Connect every servo and power connection according to the wiring diagrams before applying power.
+
+Double-check:
+
+- Servo polarity
+- Battery polarity
+- Power distribution
+- ESP32 pin assignments
+
+---
+
+## 5. Upload Firmware
+
+After completing the hardware assembly, upload the latest CRAB-X firmware to the ESP32 using Arduino IDE.
+
+---
+
+# Recommended Tools
+
+- Phillips Screwdriver Set
+- Precision Hex Drivers
+- Soldering Iron
+- Solder Wire
+- Wire Stripper
+- Flush Cutter
+- Digital Multimeter
+- Hot Glue Gun
+- Zip Ties
+
+---
+
+# Future Hardware Upgrades
+
+The modular design allows CRAB-X to evolve into an advanced autonomous robot.
+
+Future hardware support includes:
+
+- Computer Vision
+- AI Camera Module
+- Autonomous Navigation
+- ROS 2 Compatibility
+- SLAM Sensors
+- LiDAR Integration
+- Voice Control
+- Wireless Telemetry
+
+---
+
+# Related Documentation
+
+- [Build Guide](../docs/build-guide/README.md)
+- [Wiring Guide](../docs/wiring-guide/README.md)
+- [Firmware](../firmware/README.md)
+
+---
+
+> **Note**
+>
+> CRAB-X is an open-source robotics platform designed for learning, experimentation, and research. The hardware architecture is continuously evolving, and future revisions may introduce additional sensors, improved locomotion mechanisms, and enhanced autonomous capabilities.
+
+Happy Building! 🦀🤖
