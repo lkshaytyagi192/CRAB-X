@@ -1,11 +1,24 @@
 # Bill of Materials (BOM)
 
-This document lists all the hardware and electronic components required to build **CRAB-X**, a 3D-printed bio-inspired robotic crab.
+This document lists all the hardware, electronic components, and mechanical parts required to build **CRAB-X**, an affordable open-source desktop robotic crab.
 
-Before beginning assembly, ensure that you have all the required components. Refer to the **Build Guide** for detailed assembly instructions.
+CRAB-X is designed around **low-cost, off-the-shelf components**, making it easy for students, makers, and robotics enthusiasts to build without requiring custom PCBs or expensive hardware.
 
 > [!NOTE]
-> Component models may vary depending on your supplier. Equivalent alternatives with similar specifications can also be used.
+> Component brands may vary depending on your supplier. Equivalent alternatives with similar specifications can also be used.
+
+---
+
+# Hardware Version
+
+| Item | Value |
+|------|-------|
+| Robot | CRAB-X |
+| Hardware Version | V1.0 |
+| Degrees of Freedom | 8 DOF |
+| Controller | NodeMCU ESP8266 |
+| Servo Driver | PCA9685 |
+| Battery | 2×18650 Li-ion (2S) |
 
 ---
 
@@ -13,14 +26,14 @@ Before beginning assembly, ensure that you have all the required components. Ref
 
 | Component | Qty | Description |
 | ---------- | :-: | ----------- |
-| ESP32 Development Board | 1 | Main controller for CRAB-X |
-| MG90S Metal Gear Servo Motors | 8 | Leg actuation system |
-| 0.96" OLED Display *(Optional)* | 1 | Robot status display |
+| NodeMCU ESP8266 Development Board | 1 | Main controller |
+| PCA9685 16-Channel PWM Servo Driver | 1 | Controls all servo motors through I²C |
+| MG90S Metal Gear Servo Motors | 8 | Robot leg actuation |
+| 0.96" OLED Display (SSD1306, I²C) | 1 | Facial expressions and status display |
 | Slide/Rocker Power Switch | 1 | Main power control |
-| XT30/XT60 Battery Connector | 1 | Battery connection |
-| Jumper Wire Kit | 1 | Signal wiring |
-| 22 AWG Silicone Wire | 2 m | Power distribution |
-| Heat Shrink Tubing | 1 Kit | Electrical insulation |
+| 22 AWG Silicone Wire | 2–3 m | Main power wiring |
+| Jumper Wire Kit | 1 | Signal connections |
+| Heat Shrink Tubing | 1 Kit | Wire insulation |
 | Zip Ties | 1 Pack | Cable management |
 
 ---
@@ -29,22 +42,14 @@ Before beginning assembly, ensure that you have all the required components. Ref
 
 | Component | Qty | Description |
 | ---------- | :-: | ----------- |
-| 2S Li-ion Battery (7.4V) | 1 | Recommended battery pack |
-| Battery Charger | 1 | Compatible with battery |
-| 5V Buck Converter (5A Recommended) | 1 | Stable servo power supply |
-| Power Distribution Board *(Optional)* | 1 | Cleaner wiring |
+| 18650 Li-ion Cells | 2 | 3.7V cells connected in series (2S) |
+| 2S Battery Holder | 1 | Holds two 18650 cells |
+| 2S BMS Protection Board | 1 | Battery protection circuit |
+| LM2596 Buck Converter | 1 | Regulates battery voltage to 5–6V |
+| Li-ion Battery Charger | 1 | Compatible charger for 18650 cells |
 
----
-
-# Sensors (Optional Upgrades)
-
-| Component | Qty | Purpose |
-| ---------- | :-: | ------- |
-| Ultrasonic Sensor (HC-SR04) | 1 | Obstacle detection |
-| MPU6050 IMU | 1 | Orientation sensing |
-| ToF Distance Sensor | 1 | Accurate distance measurement |
-| ESP32-CAM | 1 | Computer vision |
-| IR Sensor | 2 | Line detection / edge sensing |
+> [!IMPORTANT]
+> Set the LM2596 output voltage between **5.5V and 6.0V** before connecting the electronics.
 
 ---
 
@@ -52,46 +57,64 @@ Before beginning assembly, ensure that you have all the required components. Ref
 
 | Component | Qty | Description |
 | ---------- | :-: | ----------- |
-| M2 × 8 mm Screws | ~30 | Servo mounting |
-| M2 × 12 mm Screws | ~20 | Frame assembly |
-| M2 Nuts | ~40 | Fastening |
+| M2 × 8 mm Screws | ~32 | Servo mounting |
+| M2 × 12 mm Screws | ~20 | Body assembly |
+| M2 Nuts | ~40 | Frame fastening |
 | M3 Standoffs | 4 | Controller mounting |
-| Servo Horn Screws | 8 | Included with servos |
+| Servo Horn Screws | 8 | Included with MG90S servos |
 
 ---
 
 # 3D Printed Parts
 
-Print all STL files located in:
+All printable models are located in:
 
-```
+```text
 hardware/printing/
 ```
 
-Recommended Material:
+### Parts
 
-- PLA
-- PETG *(Optional)*
+- Main Body
+- Top Cover
+- Front Cover
+- Left Front Leg
+- Right Front Leg
+- Left Rear Leg
+- Right Rear Leg
+- Upper Leg Links
+- Lower Leg Links
+- Servo Mounts
+- OLED Mount
+- Battery Holder Mount
 
-Recommended Print Settings:
+---
 
-- Layer Height: 0.2 mm
-- Infill: 20%
-- Nozzle: 0.4 mm
+# Recommended Print Settings
+
+| Setting | Value |
+|----------|-------|
+| Material | PLA |
+| Layer Height | 0.20 mm |
+| Nozzle | 0.40 mm |
+| Infill | 20% |
+| Wall Count | 3 |
+| Supports | Only where required |
+
+PETG may also be used for increased durability.
 
 ---
 
 # Required Tools
 
 | Tool | Purpose |
-| ---- | ------- |
+|------|---------|
 | Soldering Iron | Electrical assembly |
-| Solder Wire | Component soldering |
+| Solder Wire | Soldering |
 | Wire Stripper | Wire preparation |
-| Flush Cutter | Trim wires and zip ties |
-| Screwdriver Set | Robot assembly |
-| Allen Key Set | Fasteners |
-| Digital Multimeter | Voltage testing |
+| Flush Cutter | Trim wires |
+| Screwdriver Set | Assembly |
+| Digital Multimeter | Voltage verification |
 | Hot Glue Gun *(Optional)* | Cable management |
 
 ---
@@ -101,31 +124,66 @@ Recommended Print Settings:
 Before powering the robot:
 
 - Verify battery polarity.
-- Confirm all servo connections.
-- Check ESP32 pin assignments.
-- Ensure there are no short circuits.
-- Secure loose wires using zip ties.
+- Verify LM2596 output voltage.
+- Check all servo orientations.
+- Verify I²C wiring.
+- Ensure all grounds are connected together.
+- Secure loose wires with zip ties.
 
 > [!WARNING]
-> Never connect the battery directly to the ESP32 without proper voltage regulation. Always use a suitable buck converter or regulated power supply.
+> Never power the servo motors directly from the NodeMCU.
+>
+> The servo motors must be powered from the LM2596 output through the PCA9685 power rail.
+
+---
+
+# Optional Upgrades
+
+These components are **not required** for CRAB-X V1 but are supported in future versions.
+
+| Component | Purpose |
+|-----------|---------|
+| ESP32 Development Board | Higher performance controller |
+| ESP32-CAM | Computer vision |
+| MPU6050 | Balance sensing |
+| HC-SR04 Ultrasonic Sensor | Obstacle detection |
+| ToF Distance Sensor | Precise ranging |
+| Bluetooth Module | Wireless control |
+| RGB LEDs | Decorative lighting |
+| Buzzer | Sound effects |
 
 ---
 
 # Estimated Build Cost
 
 | Category | Approximate Cost |
-| -------- | ---------------- |
-| Electronics | $35 – $45 |
-| Servo Motors | $20 – $30 |
-| Battery & Power | $15 – $25 |
-| 3D Printing | $10 – $20 |
-| Hardware & Fasteners | $10 – $15 |
+|----------|-----------------:|
+| Electronics | ₹900 |
+| Servo Motors | ₹1,350 |
+| Battery & Power | ₹300 |
+| Hardware & Fasteners | ₹250 |
+| 3D Printing | ₹600 |
 
-### **Estimated Total**
+## Estimated Total
 
-**$90 – $130 USD**
+**₹3,200 – ₹3,600**
 
-*(Cost may vary depending on location and supplier.)*
+> *Prices may vary depending on supplier and location.*
+
+---
+
+# Build Difficulty
+
+⭐⭐⭐☆☆ **Intermediate**
+
+Basic knowledge of:
+
+- Arduino IDE
+- Soldering
+- Electronics
+- 3D Printing
+
+is recommended.
 
 ---
 
@@ -137,8 +195,9 @@ Before powering the robot:
 
 ---
 
-> **Tip**
->
-> Purchase one or two extra servo motors and additional screws. Spare components are extremely useful during assembly, testing, and future maintenance.
+> [!TIP]
+> Purchase **one extra MG90S servo motor** and a few additional screws. Spare components are extremely useful during assembly, calibration, and future maintenance.
+
+---
 
 Happy Building! 🦀🤖
