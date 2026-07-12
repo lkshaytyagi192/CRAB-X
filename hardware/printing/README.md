@@ -1,50 +1,246 @@
 # 3D Printing Guide
 
-Sesame is designed to be printed in **PLA**. Most parts print without supports, but the top cover needs supports in targeted areas. Below is a quick reference for each component:
+This guide provides the recommended 3D printing settings and preparation steps for building **CRAB-X**, an affordable open-source desktop robotic crab.
 
-Note: There are 3 different top cover styles currently available. **Enclosed v91 is recommended** as it's the most modern design with magnetic hat mounts, covered display wires, and multicolor detail support. See [Top Covers](stl/top-covers/) for details on all styles.
+CRAB-X is designed to be **easy to print on most consumer FDM 3D printers** with minimal supports and simple post-processing.
 
 > [!NOTE]
-> **Battery Upgrade:** The internal frame design has been slightly altered to fit the new recommended battery (Bambu Lab 14500 Li-ion). If you have an older Sesame and want to upgrade to this battery, simply print the new internal frame and install it.
+> All STL files are optimized for **0.4 mm nozzles** and standard FDM printers. Slight dimensional adjustments may be required depending on your printer's calibration.
 
-## Recommended Settings
+---
 
-* **Material:** PLA / PLA+
-* **Infill:** 8-10%
-* **Wall Loops:** 2
-* **Infill Pattern:** Honeycomb
+# Recommended Printing Material
 
-## 3D Printed Components Support Guide
+| Material | Recommendation |
+|----------|----------------|
+| PLA | ⭐ Recommended |
+| PLA+ | ⭐ Highly Recommended |
+| PETG | Optional (Higher durability) |
+| ABS | Not Recommended |
 
-| Component      | Supports Required | STL Link                                            |
-| -------------- | ----------------- | --------------------------------------------------- |
-| Joint R1       | No                | [R1-v117.stl](stl/R1-v117.stl)                         |
-| Joint R2       | No                | [R2-v117.stl](stl/R2-v117.stl)                         |
-| Joint R3       | No                | [R3-v117.stl](stl/R3-v117.stl)                         |
-| Joint R4       | No                | [R4-v117.stl](stl/R4-v117.stl)                         |
-| Joint L1       | No                | [L1-v117.stl](stl/L1-v117.stl)                         |
-| Joint L2       | No                | [L2-v117.stl](stl/L2-v117.stl)                         |
-| Joint L3       | No                | [L3-v117.stl](stl/L3-v117.stl)                         |
-| Joint L4       | No                | [L4-v117.stl](stl/L4-v117.stl)                         |
-| Internal Frame | No                | [Internal-Frame-v121.stl](stl/Internal-Frame-v121.stl) |
-| Bottom Cover   | No                | [Bottom-Cover-v121.stl](stl/Bottom-Cover-v121.stl)     |
-| Top Cover      | Yes               | [Top Covers](stl/top-covers/)                          |
+---
 
-### Top Cover Settings (Original Style)
+# Recommended Print Settings
 
-Brim: Outer brim only
-Support type: Normal (Manual)
+| Setting | Value |
+|----------|-------|
+| Nozzle Diameter | 0.4 mm |
+| Layer Height | 0.20 mm |
+| Initial Layer Height | 0.24 mm |
+| Wall Count | 3 |
+| Top Layers | 5 |
+| Bottom Layers | 5 |
+| Infill | 20% |
+| Infill Pattern | Gyroid |
+| Print Speed | 50–60 mm/s |
+| Nozzle Temperature | 200–210°C *(PLA)* |
+| Bed Temperature | 60°C |
+| Supports | Only where required |
+| Adhesion | Skirt or Brim |
 
-Manual support locations:
+---
 
-<img src="assets/topcover-supports2.png" alt="topcover-supports2" width="70%">
+# Print Orientation
 
-This is what the part should look like sliced:
+For maximum strength:
 
-<img src="assets/sliced-topcover.png" alt="sliced-topcover" width="70%">
+- Print all leg links flat on the build plate.
+- Print the body with the bottom surface facing the print bed.
+- Print servo mounts flat.
+- Print the OLED mount face-down.
+- Print battery holder flat.
 
-### Recommended Print Orientation for Joints:
+Proper orientation improves layer strength and reduces the need for supports.
 
-Using the auto orientate tool will place these the correct way.
+---
 
-<img src="assets/joints-orientation.png" alt="sliced-topcover" width="70%">
+# 3D Printed Parts
+
+All printable models are located in:
+
+```text
+hardware/printing/
+```
+
+---
+
+# Printing Order
+
+Printing in the following order is recommended:
+
+1. Servo Mounts
+2. Upper Leg Links
+3. Lower Leg Links
+4. Main Body
+5. Top Cover
+6. Front Cover
+7. OLED Mount
+8. Battery Holder
+9. Decorative Parts
+
+Printing smaller parts first allows you to verify printer tolerances before committing to longer prints.
+
+---
+
+# Support Guide
+
+| Component | Supports Required |
+|-----------|-------------------|
+| Main Body | No |
+| Top Cover | Yes (Minimal) |
+| Front Cover | No |
+| Servo Mounts | No |
+| Upper Leg Links | No |
+| Lower Leg Links | No |
+| OLED Mount | No |
+| Battery Holder | No |
+
+> [!TIP]
+> Enable **Tree Supports** or **Organic Supports** if your slicer supports them. They are easier to remove and leave cleaner surfaces.
+
+---
+
+# Infill Recommendations
+
+| Part | Infill |
+|------|--------|
+| Main Body | 20% |
+| Leg Links | 30% |
+| Servo Mounts | 40% |
+| Battery Holder | 20% |
+| OLED Mount | 20% |
+
+Higher infill on the leg components improves stiffness and walking stability.
+
+---
+
+# Wall Thickness
+
+| Part | Walls |
+|------|------:|
+| Main Body | 3 |
+| Legs | 4 |
+| Servo Mounts | 4 |
+| Covers | 3 |
+
+---
+
+# Layer Orientation
+
+Whenever possible:
+
+- Keep servo mounting holes vertical.
+- Keep load-bearing layers parallel to the direction of force.
+- Avoid printing long structural parts standing vertically.
+
+This greatly improves mechanical strength.
+
+---
+
+# Post Processing
+
+After printing:
+
+- Remove supports carefully.
+- Sand rough edges.
+- Test-fit every servo before assembly.
+- Clean screw holes if necessary.
+- Remove elephant's foot from the first layer.
+- Ensure moving parts rotate freely.
+
+Do **not** force servos into the printed mounts.
+
+---
+
+# Assembly Preparation Checklist
+
+Before starting assembly:
+
+- ✅ Verify all parts are printed.
+- ✅ Test-fit each MG90S servo.
+- ✅ Confirm screw holes align correctly.
+- ✅ Remove any remaining support material.
+- ✅ Label left and right leg components.
+- ✅ Organize screws and hardware.
+
+---
+
+# Printer Calibration
+
+Before printing the complete robot, verify:
+
+- Bed leveling
+- Extruder calibration
+- Dimensional accuracy
+- First layer adhesion
+
+Printing a small calibration cube is recommended before printing structural components.
+
+---
+
+# Estimated Printing Time
+
+| Component | Approximate Time |
+|-----------|-----------------:|
+| Main Body | 6–8 Hours |
+| Top Cover | 3–4 Hours |
+| Servo Mounts | 2 Hours |
+| Upper Leg Links | 4 Hours |
+| Lower Leg Links | 4 Hours |
+| Battery Holder | 45 Minutes |
+| OLED Mount | 30 Minutes |
+
+**Total Estimated Print Time:** **20–24 Hours**
+
+*(Varies depending on printer and print speed.)*
+
+---
+
+# Recommended Print Colors
+
+Suggested color combinations:
+
+- Black + Orange
+- White + Black
+- Gray + Red
+- Matte Black
+- Blue + White
+
+Using two colors gives CRAB-X a more premium appearance.
+
+---
+
+# Troubleshooting
+
+| Problem | Solution |
+|----------|----------|
+| Servo doesn't fit | Adjust horizontal expansion or lightly sand the mount. |
+| Loose servo mount | Reprint with better dimensional calibration or use thin shims. |
+| Warping | Increase bed adhesion and bed temperature. |
+| Weak leg | Increase infill and wall count. |
+| Poor first layer | Re-level the print bed. |
+
+---
+
+# Safety Notes
+
+> [!WARNING]
+> Never force screws directly into printed plastic without proper alignment. Excessive force may crack the printed components.
+
+> [!WARNING]
+> Ensure all printed parts are fully cooled before assembly to prevent deformation.
+
+---
+
+# Related Documentation
+
+- [Bill of Materials](../bom/README.md)
+- [Build Guide](../../docs/build-guide/README.md)
+- [Firmware](../../firmware/README.md)
+
+---
+
+> [!TIP]
+> Print **one complete leg assembly first** and verify servo fitment before printing the entire robot. This saves both material and printing time if adjustments are needed.
+
+Happy Printing! 🦀🖨️
