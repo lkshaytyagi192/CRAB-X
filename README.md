@@ -3,55 +3,68 @@
 ### Bio-Inspired Quadruped Robotic Crab
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-yellow)
-![Microcontroller](https://img.shields.io/badge/Microcontroller-ESP32-blue)
+![Controller](https://img.shields.io/badge/Controller-NodeMCU%20ESP8266-blue)
+![Servo%20Driver](https://img.shields.io/badge/Servo%20Driver-PCA9685-success)
 ![Firmware](https://img.shields.io/badge/Firmware-C%2B%2B-blue?logo=c%2B%2B)
-![IDE](https://img.shields.io/badge/IDE-Arduino-00979D?logo=arduino&logoColor=white)
+![IDE](https://img.shields.io/badge/IDE-Arduino-00979D?logo=arduino\&logoColor=white)
 ![CAD](https://img.shields.io/badge/CAD-Fusion%20360-orange)
 ![Status](https://img.shields.io/badge/Status-Under%20Development-success)
 
-> **A compact, 3D-printed bio-inspired quadruped robotic crab for embedded systems, robotics research, and autonomous locomotion.**
+> **A compact, 3D-printed bio-inspired robotic crab designed for embedded systems, robotics education, locomotion research, and future autonomous robotics.**
+
+---
+
+> [!IMPORTANT]
+>
+> **Project Status:** 🚧 Under Active Development
+>
+> CRAB-X is currently in the hardware assembly and firmware development stage. Walking algorithms, wireless control, and advanced autonomous features are actively being developed.
 
 ---
 
 # 📖 Overview
 
-**CRAB-X** is an open-source robotics project focused on developing a compact quadruped robotic crab capable of stable walking, wireless control, and future autonomous navigation.
+**CRAB-X** is an open-source quadruped robotics platform inspired by the natural movement of crabs.
 
-The project combines mechanical design, embedded programming, robotics, and computer vision into a modular platform that can be expanded with sensors, cameras, and intelligent navigation algorithms.
+Designed around affordable off-the-shelf components, CRAB-X combines embedded programming, 3D printing, electronics, and robotics into a modular learning platform. The project focuses on developing smooth walking gaits, expressive OLED animations, wireless control, and future autonomous capabilities.
 
-Designed for students, makers, and robotics enthusiasts, CRAB-X serves as a practical platform for learning embedded systems, robot kinematics, and autonomous robotics.
+The robot is intentionally designed to be beginner-friendly while remaining expandable for advanced robotics research.
 
 ---
 
-> **Project Note**
+> [!NOTE]
 >
-> CRAB-X began as a learning project inspired by the excellent open-source **Sesame Robot** created by **Dorian Todd**. While early versions reuse parts of the original mechanical architecture and documentation, the project is actively evolving with original improvements, firmware development, new features, and future autonomous capabilities.
+> CRAB-X is inspired by the excellent open-source **Sesame Robot** created by **Dorian Todd**.
+>
+> While the initial mechanical concept was inspired by Sesame Robot, CRAB-X is being redesigned with its own firmware architecture, electronics, documentation, modular hardware, and future AI capabilities.
 
 ---
 
 # ✨ Features
 
-- 🦀 Bio-inspired crab-inspired locomotion
-- 🖨️ Fully 3D printable mechanical structure
-- ⚙️ 8-Servo multi-legged actuation
-- 📡 ESP32 embedded controller
-- 📶 Wi-Fi based wireless control
-- 🔋 Rechargeable battery powered
-- 🧠 Modular architecture for future AI features
-- 📷 Expandable with computer vision
-- 🔧 Open-source and easy to customize
+* 🦀 Bio-inspired quadruped crab locomotion
+* 🖨 Fully 3D printable PLA chassis
+* ⚙️ 8 × MG90S metal gear servo actuators
+* 📟 Animated OLED facial expressions
+* 📡 Wi-Fi control using NodeMCU ESP8266
+* 🎛 PCA9685 16-channel PWM servo controller
+* 🔋 Rechargeable 2S Li-ion battery system
+* 🧠 Modular firmware architecture
+* 🔧 Expandable electronics platform
+* 🚀 Designed for future autonomous robotics
 
 ---
 
-# 🎯 Project Objectives
+# 🎯 Project Goals
 
-- Learn quadruped robot locomotion
-- Develop walking gait algorithms
-- Explore embedded systems programming
-- Design modular robotic hardware
-- Implement computer vision
-- Integrate autonomous navigation
-- Build an expandable robotics research platform
+* Learn embedded systems programming
+* Develop stable walking algorithms
+* Explore quadruped robot kinematics
+* Design modular robotic hardware
+* Build reusable robotics firmware
+* Implement wireless robot control
+* Add computer vision
+* Develop autonomous navigation
 
 ---
 
@@ -59,121 +72,175 @@ Designed for students, makers, and robotics enthusiasts, CRAB-X serves as a prac
 
 ## Controller
 
-- ESP32 Development Board
+* NodeMCU ESP8266
+
+## Servo Driver
+
+* PCA9685 16-Channel PWM Driver
+
+## Display
+
+* 0.96" SSD1306 OLED Display
 
 ## Actuation
 
-- 8 × MG90S Metal Gear Servo Motors
-
-## Mechanical Design
-
-- Fully 3D Printed PLA Chassis
-- Modular Leg Mechanism
+* 8 × MG90S Metal Gear Servo Motors
 
 ## Power System
 
-- 2S Li-ion Battery
-- Voltage Regulator
-- Power Switch
+* 2 × 18650 Li-ion Cells (2S)
+* HX-2S-A2 Battery Management System
+* LM2596 Buck Converter
+* Power Switch
+
+## Mechanical
+
+* Fully 3D Printed PLA Chassis
+* Modular Leg Assembly
 
 ## Future Expansion
 
-- ESP32-CAM
-- IMU
-- Ultrasonic Sensor
-- ToF Sensor
-- OLED Display
+* ESP32-CAM
+* MPU6050 IMU
+* Ultrasonic Sensor
+* ToF Distance Sensor
 
 ---
 
 # 💻 Software Stack
 
-Current
+### Current
 
-- Arduino IDE
-- C++
-- ESP32 Framework
-- Fusion 360
-- Git
-- GitHub
+* Arduino IDE
+* C++
+* ESP8266 Arduino Core
+* PCA9685 Library
+* Adafruit SSD1306
+* Adafruit GFX
+* Fusion 360
+* Git
+* GitHub
 
-Planned
+### Planned
 
-- ROS 2
-- OpenCV
-- Python
-- TensorFlow Lite
-- Micro-ROS
+* ROS 2
+* OpenCV
+* Python
+* TensorFlow Lite
+* Micro-ROS
 
 ---
 
-# 🚀 Current Capabilities
+# 🚀 Current Development
 
-- Forward Walking
-- Reverse Walking
-- Crab Side Walking
-- Left / Right Turning
-- Servo Calibration
-- Wireless Control *(In Progress)*
+### Completed
 
-Future
+* ✅ CAD Design
+* ✅ Hardware Planning
+* ✅ Bill of Materials
+* ✅ Firmware Architecture
+* ✅ Documentation
 
-- Autonomous Navigation
-- Computer Vision
-- Object Tracking
-- AI-Based Decision Making
+### In Progress
+
+* 🔄 3D Printing
+* 🔄 Electronics Assembly
+* 🔄 Servo Installation
+* 🔄 OLED Integration
+* 🔄 Motion Development
+
+### Upcoming
+
+* Walking Gaits
+* Servo Calibration
+* Web-Based Controller
+* Wi-Fi API
+* OLED Animations
 
 ---
 
 # 📂 Repository Structure
 
-```
+```text
 CRAB-X/
 │
-├── docs/
-├── hardware/
 ├── firmware/
-├── software/
-├── CAD/
-├── STL/
-├── Images/
-├── Videos/
-├── Simulation/
+│   ├── CRAB-X.ino
+│   ├── config.h
+│   ├── servo_controller.h
+│   ├── calibration.h
+│   ├── display.h
+│   ├── faces.h
+│   ├── movement.h
+│   ├── animations.h
+│   ├── utils.h
+│   └── README.md
+│
+├── hardware/
+│   ├── bom/
+│   ├── cad/
+│   ├── printing/
+│   └── electronics/
+│
+├── docs/
+│   ├── build-guide/
+│   ├── wiring-guide/
+│   └── firmware-guide/
+│
+├── assets/
+│
 ├── LICENSE
 └── README.md
 ```
 
 ---
 
-# 🗺️ Development Roadmap
+# 🗺 Development Roadmap
 
 ## Phase 1 — Hardware
 
-- ✅ CAD Design
-- ✅ Mechanical Assembly
-- ✅ 3D Printed Prototype
-- ✅ Servo Installation
+* ✅ CAD Design
+* ✅ BOM
+* 🔄 3D Printing
+* 🔄 Electronics Assembly
+* 🔄 Power System
+
+---
 
 ## Phase 2 — Motion
 
-- Servo Calibration
-- Walking Gaits
-- Motion Optimization
-- Wireless Controller
+* Servo Calibration
+* Walking Gaits
+* Motion Optimization
+* OLED Expressions
 
-## Phase 3 — Intelligence
+---
 
-- ESP32-CAM Integration
-- OpenCV Vision
-- Object Tracking
-- Obstacle Avoidance
+## Phase 3 — Connectivity
 
-## Phase 4 — Autonomy
+* Wi-Fi Control
+* Web Dashboard
+* REST API
+* OTA Firmware Updates
 
-- Autonomous Navigation
-- AI Decision Making
-- ROS 2 Integration
-- Multi-Robot Communication
+---
+
+## Phase 4 — Intelligence
+
+* ESP32-CAM Integration
+* Computer Vision
+* Object Detection
+* Obstacle Avoidance
+
+---
+
+## Phase 5 — Autonomous Robotics
+
+* Autonomous Navigation
+* AI Motion Planning
+* ROS 2 Integration
+* SLAM
+* Multi-Robot Communication
 
 ---
 
@@ -181,63 +248,65 @@ CRAB-X/
 
 Coming Soon
 
-- CAD Renders
-- Assembly Images
-- Walking Demonstrations
-- Build Process
-- Motion Videos
+* CAD Renders
+* 3D Printed Parts
+* Hardware Assembly
+* Walking Demonstrations
+* Firmware Development
+* Build Process
+* Motion Videos
 
 ---
 
 # 📚 Planned Features
 
-- Computer Vision
-- AI Navigation
-- SLAM
-- ROS 2 Support
-- Mobile App
-- Voice Commands
-- OTA Firmware Updates
-- Machine Learning Gait Optimization
+* OLED Face Animations
+* Wi-Fi Remote Controller
+* REST API
+* OTA Firmware Updates
+* Computer Vision
+* Object Tracking
+* Autonomous Navigation
+* Sensor Fusion
+* ROS 2 Support
+* AI Motion Optimization
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome.
+Contributions are always welcome.
 
 Areas where help is appreciated:
 
-- Motion planning
-- Embedded firmware
-- Walking gaits
-- Mechanical improvements
-- Computer vision
-- Sensor integration
-- ROS 2 support
-- Documentation
+* Embedded Firmware
+* Walking Algorithms
+* Robot Kinematics
+* PCB Design
+* Mechanical Improvements
+* Computer Vision
+* Sensor Integration
+* ROS 2
+* Documentation
 
 ---
 
 # 🙏 Acknowledgements
 
-CRAB-X is inspired by the **Sesame Robot** open-source project created by **Dorian Todd**.
+CRAB-X is inspired by the open-source **Sesame Robot** project created by **Dorian Todd**.
 
-The original project served as the foundation for learning quadruped robot design and embedded robotics. CRAB-X is being continuously expanded with original hardware improvements, firmware, documentation, and future autonomous robotics capabilities.
+The project provided valuable inspiration for learning quadruped robotics and embedded systems.
+
+CRAB-X is an independent educational project focused on expanding the original concept through new firmware, documentation, electronics architecture, wireless control, OLED animations, and future autonomous robotics features.
 
 Original Project:
 
-**Sesame Robot**
+* **Sesame Robot**
+* **Creator:** Dorian Todd
+* **License:** Apache License 2.0
+* **Repository:** https://github.com/dorianborian/sesame-robot
 
-Creator: **Dorian Todd**
-
-Repository:
-https://github.com/dorianborian/sesame-robot
-
-License:
-Apache License 2.0
-
-Special thanks to Dorian Todd and all contributors for making advanced robotics accessible to the open-source community.
+Special thanks to Dorian Todd and the open-source robotics community for making advanced robotics accessible to everyone.
 
 ---
 
@@ -247,7 +316,7 @@ Special thanks to Dorian Todd and all contributors for making advanced robotics 
 
 **B.Tech Computer Science Engineering**
 
-Embedded Systems • Robotics • Computer Vision • Autonomous UAVs
+Embedded Systems • Robotics • Computer Vision • Autonomous Systems • UAV Software
 
 GitHub:
 https://github.com/lkshaytyagi192
@@ -256,6 +325,10 @@ https://github.com/lkshaytyagi192
 
 # ⭐ Support the Project
 
-If you find **CRAB-X** interesting, consider giving the repository a ⭐.
+If you like **CRAB-X**, consider giving the repository a ⭐.
 
-Every star motivates further development toward building a fully autonomous bio-inspired robotic platform.
+Every star helps motivate the continued development of CRAB-X into a complete open-source autonomous robotics platform.
+
+---
+
+> **"Learning robotics isn't about building a robot once—it's about building a platform that keeps evolving."** 🦀🤖
