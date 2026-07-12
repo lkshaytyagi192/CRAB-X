@@ -1,64 +1,39 @@
 # 🦀 CRAB-X Firmware
 
-The CRAB-X firmware controls every aspect of the robot, including locomotion, servo coordination, OLED animations, and future autonomous capabilities.
+Firmware for the **CRAB-X Bio-Inspired Robotic Crab**.
 
-Built on the Arduino framework, the firmware is designed to be lightweight, modular, and easy to extend. Each subsystem is separated into individual files, making development and debugging significantly easier.
+This firmware controls the robot's movement, OLED display, servo calibration, and future autonomous capabilities using a **NodeMCU ESP8266**, **PCA9685 Servo Driver**, and **SSD1306 OLED Display**.
 
-Whether you're building your first walking robot or experimenting with embedded robotics, this firmware provides a clean foundation for future upgrades.
+---
+
+# Hardware
+
+- NodeMCU ESP8266
+- PCA9685 Servo Driver
+- 8 × MG90S Metal Gear Servos
+- SSD1306 0.96" OLED Display
+- 2S Li-ion Battery (7.4V)
+- LM2596 Buck Converter
 
 ---
 
 # Features
 
-Current firmware supports:
+✔ 8 Servo Walking Robot
 
-- 8 DOF Walking Robot
-- Quadruped Crab Gait
-- PCA9685 Servo Driver
-- OLED Face Animations
-- Smooth Motion Interpolation
-- Servo Calibration
-- Multiple Robot Poses
-- Low Power Embedded Design
+✔ OLED Animated Faces
 
-Upcoming versions will include:
+✔ Servo Calibration System
 
-- Bluetooth Remote Control
-- Smartphone App
-- Gesture Control
-- Obstacle Avoidance
-- Autonomous Navigation
-- Computer Vision
-- ESP32 Upgrade
-- Voice Interaction
+✔ Modular Firmware Architecture
 
----
+✔ Smooth Walking Animations
 
-# Firmware Architecture
+✔ Expandable Sensor Support
 
-The firmware follows a modular architecture.
+✔ Future WiFi Remote Control
 
-```
-                +----------------+
-                |   CRAB-X.ino   |
-                +--------+-------+
-                         |
-        +----------------+----------------+
-        |                |                |
-        |                |                |
-   Movement         OLED Display      Power
-        |                |                |
-        |                |                |
- Servo Driver       Face Engine     Battery Monitor
-        |
-   PCA9685 Driver
-        |
-    MG90S Servos
-```
-
-Each subsystem is isolated inside its own source file.
-
-This makes adding new hardware or implementing new walking algorithms significantly easier.
+✔ Open Source
 
 ---
 
@@ -67,135 +42,212 @@ This makes adding new hardware or implementing new walking algorithms significan
 ```
 firmware/
 
-CRAB-X.ino
-
-config.h
-
-movement.h
-
-animations.h
-
-faces.h
-
-display.h
-
-servo_controller.h
-
-calibration.h
-
-power.h
-
-utils.h
+│── CRAB-X.ino
+│── config.h
+│── servo_controller.h
+│── calibration.h
+│── display.h
+│── faces.h
+│── movement.h
+│── animations.h
+│── utils.h
+│── README.md
 ```
 
 ---
 
-# Hardware Requirements
+# Firmware Modules
 
-CRAB-X V1 firmware is designed for the following hardware.
+## config.h
 
-| Component | Quantity |
-|-----------|---------:|
-| NodeMCU ESP8266 | 1 |
-| PCA9685 Servo Driver | 1 |
-| MG90S Servo | 8 |
-| SSD1306 OLED Display | 1 |
-| 2S Li-ion Battery | 1 |
-| LM2596 Buck Converter | 1 |
+Stores all configurable parameters.
+
+- Servo Pins
+- OLED Address
+- Servo Limits
+- Motion Parameters
 
 ---
 
-# Development Environment
+## servo_controller.h
 
-Recommended software:
+Controls the PCA9685 servo driver.
 
-- Arduino IDE 2.x
-- ESP8266 Board Package
-- USB Driver (CH340 or CP2102)
-- Serial Monitor (115200 baud)
+Functions include:
 
-Operating Systems:
-
-- Windows
-- Linux
-- macOS
+- Servo Initialization
+- Smooth Servo Movement
+- Angle Conversion
 
 ---
 
-# Installing ESP8266 Board Package
+## calibration.h
 
-Open Arduino IDE.
+Stores and loads servo offsets.
 
-Navigate to
+Allows every servo to be individually calibrated.
 
-Tools → Board → Boards Manager
+---
 
-Search
+## display.h
 
-ESP8266
+Controls the OLED display.
 
-Install
+Features:
 
-ESP8266 by ESP8266 Community
+- Initialization
+- Text Rendering
+- Bitmap Rendering
+- Status Screens
 
-After installation select
+---
 
-Tools
+## faces.h
+
+Contains all robot facial expressions.
+
+Examples:
+
+- Happy
+- Neutral
+- Angry
+- Sleep
+- Blink
+
+---
+
+## animations.h
+
+Controls OLED animations.
+
+Examples:
+
+- Idle
+- Blink
+- Happy Animation
+- Wake Up
+
+---
+
+## movement.h
+
+Contains all robot movements.
+
+Examples:
+
+- Stand
+- Sit
+- Walk Forward
+- Walk Backward
+- Rotate Left
+- Rotate Right
+- Dance
+- Wave
+
+---
+
+## utils.h
+
+Utility functions used throughout the project.
+
+Examples:
+
+- Delay Helpers
+- Mapping Functions
+- Debug Printing
+- EEPROM Utilities
+
+---
+
+# Power
+
+Battery
+
+7.4V Li-ion (2S)
 
 ↓
 
-Board
+Buck Converter (5V)
 
 ↓
 
-NodeMCU 1.0 (ESP-12E Module)
+PCA9685 + Servos
+
+↓
+
+NodeMCU (VIN)
+
+---
+
+# Development Roadmap
+
+### Version 1
+
+- Walking
+- OLED Faces
+- Servo Calibration
+
+### Version 2
+
+- WiFi Remote Control
+- Web Dashboard
+- OTA Updates
+
+### Version 3
+
+- Ultrasonic Sensor
+- IMU
+- Battery Monitoring
+
+### Version 4
+
+- ESP32-CAM Vision
+- Object Tracking
+- AI Integration
 
 ---
 
 # Required Libraries
 
-Install the following libraries using the Arduino Library Manager.
+Install these libraries from the Arduino IDE Library Manager:
 
-Required:
-
-• Adafruit PWM Servo Driver Library
-
-• Adafruit SSD1306
-
-• Adafruit GFX
-
-• Wire
-
-Optional:
-
-• EEPROM
-
-• ServoEasing
-
-Always install the latest stable versions.
+- Adafruit PWM Servo Driver
+- Adafruit SSD1306
+- Adafruit GFX
+- EEPROM
 
 ---
 
-# Flashing the Firmware
+# Upload Settings
 
-1. Connect NodeMCU using USB.
+Board:
 
-2. Open
+NodeMCU 1.0 (ESP-12E Module)
 
-CRAB-X.ino
+Baud Rate:
 
-3. Select
+115200
 
-NodeMCU 1.0
+Flash Frequency:
 
-4. Select correct COM Port.
+80 MHz
 
-5. Click Upload.
+Upload Speed:
 
-Compilation takes approximately 20–40 seconds.
+115200
 
-After uploading, open the Serial Monitor at
+---
 
-115200 baud
+# License
 
-to verify successful initialization.
+MIT License
+
+---
+
+# Author
+
+Lakshay Tyagi
+
+CRAB-X is an open-source robotics project designed for learning, embedded systems development, and bio-inspired robotics research.
+
+Happy Building! 🦀🤖
