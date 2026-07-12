@@ -1,142 +1,274 @@
 # Hardware
 
-This directory contains all of the mechanical and electronic resources required to build **CRAB-X**, a bio-inspired 3D-printed robotic crab.
+Welcome to the **CRAB-X Hardware** directory.
 
-The hardware has been designed to be modular, allowing builders to assemble the robot using readily available components while providing flexibility for future upgrades such as computer vision, autonomous navigation, and additional sensors.
+This folder contains everything required to build the physical robot, including the mechanical design, electronics, 3D printing resources, and assembly documentation.
 
-Whether you're building your first walking robot or experimenting with embedded systems, this directory contains everything needed to assemble the physical platform.
+CRAB-X is designed as an **affordable, modular, and open-source desktop robotic crab**, allowing students, makers, and robotics enthusiasts to build a capable quadruped using inexpensive, off-the-shelf components.
+
+The hardware architecture emphasizes:
+
+- Low-cost components
+- Easy assembly
+- Modular upgrades
+- Beginner-friendly design
+- Open-source development
 
 ---
 
-# Directory Guide
+# Directory Structure
 
 | Folder | Description |
 | ------- | ----------- |
-| [bom](bom/README.md) | Complete Bill of Materials (BOM) including electronics, mechanical components, fasteners, and recommended tools. |
-| [cad](cad/README.md) | Original Fusion 360 designs, STEP files, and editable CAD models for customization and future development. |
-| [printing](printing/README.md) | STL files, recommended print settings, printer orientation, and assembly notes for all 3D-printed components. |
-| [electronics](electronics/README.md) | Circuit diagrams, wiring layouts, pin connections, and electrical documentation. *(Coming Soon)* |
+| [bom](bom/README.md) | Complete Bill of Materials including electronics, mechanical parts, hardware, and recommended tools. |
+| [cad](cad/README.md) | Fusion 360 source files, STEP models, and editable CAD files. |
+| [printing](printing/README.md) | STL files, print settings, recommended orientations, and printing instructions. |
+| [electronics](electronics/README.md) | Wiring diagrams, pin assignments, power distribution, and electrical documentation. *(Coming Soon)* |
 
 ---
 
-# Hardware Specifications
+# Hardware Overview
 
-## Controller
+## Main Controller
 
-- ESP32 Development Board
+- NodeMCU ESP8266
 
-## Actuators
+---
+
+## Servo Controller
+
+- PCA9685 16-Channel PWM Servo Driver
+
+---
+
+## Actuation
 
 - 8 × MG90S Metal Gear Servo Motors
+- 8 Degrees of Freedom (8-DOF)
 
-## Structure
+---
 
-- Fully 3D Printed PLA Chassis
-- Modular Leg Assembly
-- Lightweight Mechanical Design
+## Display
+
+- 0.96" SSD1306 OLED Display (I²C)
+
+Used for:
+
+- Robot expressions
+- Status display
+- Boot animation
+- Error messages
+
+---
 
 ## Power System
 
-- 2S Li-ion Battery
-- Voltage Regulator
-- Power Switch
-
-## Expandable Modules
-
-- ESP32-CAM
-- Ultrasonic Sensor
-- IMU
-- OLED Display
-- ToF Distance Sensor
+- 2 × 18650 Li-ion Cells (2S)
+- 2S Battery Holder
+- 2S BMS Protection Board
+- LM2596 Buck Converter
+- Rocker/Slide Power Switch
 
 ---
 
-# Getting Started
+## Mechanical Design
 
-## 1. Print the Mechanical Parts
+- Fully 3D Printed Chassis
+- Modular Leg Assemblies
+- Replaceable Servo Mounts
+- Lightweight Structure
+- Easy Maintenance
 
-Download the STL files from the **printing** directory and print every required component using the recommended settings.
+---
 
-Recommended Material:
+# Design Philosophy
+
+CRAB-X has been designed around four core principles:
+
+### Affordable
+
+Uses inexpensive and widely available electronic components.
+
+### Modular
+
+Every major component can be replaced or upgraded without redesigning the robot.
+
+### Open Source
+
+All CAD files, firmware, documentation, and STL models are publicly available.
+
+### Beginner Friendly
+
+No custom PCB or advanced manufacturing techniques are required.
+
+---
+
+# Build Workflow
+
+Follow this order when building CRAB-X.
+
+## Step 1 — Print Components
+
+Print every required part from the **printing** directory using the recommended printer settings.
+
+Recommended material:
 
 - PLA
-- 0.2 mm Layer Height
-- 20% Infill
+- PLA+
 
 ---
 
-## 2. Gather Components
+## Step 2 — Prepare Electronics
 
-Use the **Bill of Materials (BOM)** to collect all electronics, screws, bearings, and accessories before beginning assembly.
+Collect all required components using the **Bill of Materials**.
 
----
+This includes:
 
-## 3. Assemble the Robot
-
-Follow the **Build Guide** to assemble the chassis, install servos, and mount the electronics.
-
----
-
-## 4. Complete Wiring
-
-Connect every servo and power connection according to the wiring diagrams before applying power.
-
-Double-check:
-
-- Servo polarity
-- Battery polarity
-- Power distribution
-- ESP32 pin assignments
+- Servo motors
+- Controller
+- Servo driver
+- Battery
+- Power electronics
+- Hardware
 
 ---
 
-## 5. Upload Firmware
+## Step 3 — Mechanical Assembly
 
-After completing the hardware assembly, upload the latest CRAB-X firmware to the ESP32 using Arduino IDE.
+Assemble:
+
+- Main body
+- Servo mounts
+- Leg assemblies
+- Battery holder
+- OLED mount
+
+Verify that all moving joints rotate freely.
 
 ---
 
-# Recommended Tools
+## Step 4 — Electrical Assembly
+
+Install:
+
+- NodeMCU
+- PCA9685
+- OLED
+- Battery holder
+- LM2596
+- Power switch
+
+Route all wiring neatly before securing components.
+
+---
+
+## Step 5 — Wiring Verification
+
+Before powering the robot:
+
+- Verify battery polarity.
+- Verify LM2596 output voltage.
+- Check servo orientation.
+- Confirm I²C wiring.
+- Ensure all grounds are connected.
+
+---
+
+## Step 6 — Upload Firmware
+
+Upload the latest firmware using Arduino IDE.
+
+After uploading:
+
+- Calibrate servos
+- Verify OLED operation
+- Test every joint
+- Perform first boot
+
+---
+
+# Required Tools
 
 - Phillips Screwdriver Set
-- Precision Hex Drivers
+- Precision Screwdrivers
 - Soldering Iron
 - Solder Wire
 - Wire Stripper
 - Flush Cutter
 - Digital Multimeter
-- Hot Glue Gun
+- Hot Glue Gun *(Optional)*
+- Tweezers
 - Zip Ties
 
 ---
 
-# Future Hardware Upgrades
+# Future Hardware Expansion
 
-The modular design allows CRAB-X to evolve into an advanced autonomous robot.
+CRAB-X V1 has been designed to support future upgrades without major redesigns.
 
-Future hardware support includes:
+Possible upgrades include:
 
-- Computer Vision
-- AI Camera Module
-- Autonomous Navigation
-- ROS 2 Compatibility
-- SLAM Sensors
-- LiDAR Integration
+- ESP32 Controller
+- ESP32-CAM
+- Bluetooth Control
+- Wi-Fi Dashboard
+- MPU6050 IMU
+- Ultrasonic Sensor
+- ToF Distance Sensor
+- RGB Status LEDs
+- Buzzer
+- Gesture Control
 - Voice Control
-- Wireless Telemetry
+
+---
+
+# Hardware Specifications
+
+| Feature | Specification |
+|----------|---------------|
+| Robot Type | Desktop Quadruped Robotic Crab |
+| Degrees of Freedom | 8 |
+| Controller | NodeMCU ESP8266 |
+| Servo Driver | PCA9685 |
+| Servo Motors | 8 × MG90S Metal Gear |
+| Display | 0.96" OLED SSD1306 |
+| Power Supply | 2×18650 (2S) |
+| Voltage Regulation | LM2596 |
+| Manufacturing | FDM 3D Printing |
+
+---
+
+# Repository Structure
+
+```text
+hardware/
+
+├── bom/
+├── cad/
+├── printing/
+└── electronics/
+```
 
 ---
 
 # Related Documentation
 
+- [Bill of Materials](bom/README.md)
+- [3D Printing Guide](printing/README.md)
+- [CAD Files](cad/README.md)
 - [Build Guide](../docs/build-guide/README.md)
-- [Wiring Guide](../docs/wiring-guide/README.md)
 - [Firmware](../firmware/README.md)
 
 ---
 
-> **Note**
->
-> CRAB-X is an open-source robotics platform designed for learning, experimentation, and research. The hardware architecture is continuously evolving, and future revisions may introduce additional sensors, improved locomotion mechanisms, and enhanced autonomous capabilities.
+> [!TIP]
+> Before assembling the complete robot, print and test **one leg assembly** with its servo to verify tolerances and fitment. This helps avoid wasting print time and material if adjustments are needed.
+
+---
+
+> [!NOTE]
+> CRAB-X is an evolving open-source robotics platform. Future hardware revisions may introduce new features, improved locomotion, enhanced power management, and additional autonomous capabilities while maintaining compatibility with the original design whenever possible.
+
+---
 
 Happy Building! 🦀🤖
